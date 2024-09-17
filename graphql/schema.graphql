@@ -1,0 +1,15 @@
+type User @model @auth(rules: [
+  { allow: public, operations: [create, update, delete, read] }
+]) {
+  id: ID!   # Cognito 'sub'
+  age: Int
+}
+
+type UserHistory {
+  id: String
+  createdAt: String
+}
+
+type Query {
+  getUserHistory(id: String!): UserHistory
+}
